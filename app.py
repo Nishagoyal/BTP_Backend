@@ -20,7 +20,7 @@ def SignIn():
             server = 'websitetestingserver2112.database.windows.net' 
             database = 'devDB' 
             username = 'websitetestingserver2112_admin' 
-            password = 'MkkI2785****'
+            password = ''
             cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
             cursor = cnxn.cursor()
             password=generate_password_hash("{request_data['password']}")
