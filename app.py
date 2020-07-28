@@ -43,33 +43,6 @@ def SignIn():
         cnxn.close()
        
    
-# @app.route("/Login", methods=['GET', 'POST'])
-# def Login():
-#     error = None
-#     request_data=request.json
-#     print(request.json)
-#     #print(type(request.json))
-#     if request.method == 'POST':
-#         server = 'websitetestingserver2112.database.windows.net' 
-#         database = 'devDB' 
-#         username = 'websitetestingserver2112_admin' 
-#         password = 'MkkI2785****'
-#         cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-#         cursor = cnxn.cursor()
-#         password=generate_password_hash("{request_data['password']}")
-#         cursor.execute(f"SELECT * FROM registration1 WHERE email_id ='{request_data['email_id']}' AND password='{password}'")
-#        # cursor.execute("select * from registration")
-       
-#         rows = cursor.fetchall()
-#         for row in rows:
-#              print(row, end='\n')
-
-#         sql_query = pd.read_sql_query(f"SELECT * FROM registration1 WHERE email_id ='{request_data['email_id']}' AND password='{password}'",cnxn)
-#         print(sql_query)
-#         print(type(sql_query))
-#         cnxn.close()
-#     return "done"
-        
 @app.route("/Login", methods=['GET', 'POST'])
 def Login():
     error = None
@@ -84,10 +57,7 @@ def Login():
         cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
         cursor = cnxn.cursor()
         password=generate_password_hash("{request_data['password']}")
-        cursor.execute(f"SELECT email_id , password FROM registration1 WHERE email_id ='{request_data['email_id']}'")
-        user = cursor.fetchall()
-        email_id = user[0]
-        password = user[1]
+        cursor.execute(f"SELECT * FROM registration1 WHERE email_id ='{request_data['email_id']}' AND password='{password}'")
        # cursor.execute("select * from registration")
        
         rows = cursor.fetchall()
@@ -99,6 +69,36 @@ def Login():
         print(type(sql_query))
         cnxn.close()
     return "done"
+        
+# @app.route("/Login", methods=['GET', 'POST'])
+# def Login():
+#     error = None
+#     request_data=request.json
+#     print(request.json)
+#     #print(type(request.json))
+#     if request.method == 'POST':
+#         server = 'websitetestingserver2112.database.windows.net' 
+#         database = 'devDB' 
+#         username = 'websitetestingserver2112_admin' 
+#         password = 'MkkI2785****'
+#         cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
+#         cursor = cnxn.cursor()
+#         password=generate_password_hash("{request_data['password']}")
+#         cursor.execute(f"SELECT email_id , password FROM registration1 WHERE email_id ='{request_data['email_id']}'")
+#         user = cursor.fetchall()
+#         email_id = user[0]
+#         password = user[1]
+#        # cursor.execute("select * from registration")
+       
+#         rows = cursor.fetchall()
+#         for row in rows:
+#              print(row, end='\n')
+
+#         sql_query = pd.read_sql_query(f"SELECT * FROM registration1 WHERE email_id ='{request_data['email_id']}' AND password='{password}'",cnxn)
+#         print(sql_query)
+#         print(type(sql_query))
+#         cnxn.close()
+#     return "done"
         
 if __name__ == "__main__":
     
