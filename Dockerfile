@@ -1,8 +1,0 @@
-FROM python:2.7
-MAINTAINER  Nisha "nisha2112@hotmail.com"
-WORKDIR /app
-COPY . /app
-RUN pip install -r requirements.txt
-EXPOSE 5000
-ENTRYPOINT ["python"]
-CMD ["app.py"]
