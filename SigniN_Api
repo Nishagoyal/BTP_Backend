@@ -20,7 +20,7 @@ def SignIn():
             server = 'flask.database.windows.net' 
             database = 'flask12' 
             username = 'flask' 
-            password = 'MkkI2785****'
+            password = //write password
             cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
             cursor = cnxn.cursor()
             password=generate_password_hash("{request_data['password']}")
